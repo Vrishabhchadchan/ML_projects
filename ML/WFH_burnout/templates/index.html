@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work From Home Burnout Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔥 WFH Burnout Predictor</h1>
+            <p class="subtitle">Predict your burnout risk based on your work patterns</p>
+        </header>
+
+        <form id="burnoutForm">
+            <div class="form-grid">
+                <!-- Work Hours -->
+                <div class="form-group">
+                    <label for="work_hours">Work Hours (per day)</label>
+                    <input type="number" id="work_hours" name="work_hours" 
+                           step="0.1" min="0" max="24" required>
+                    <span class="hint">e.g., 8.5</span>
+                </div>
+
+                <!-- Screen Time Hours -->
+                <div class="form-group">
+                    <label for="screen_time_hours">Screen Time (hours/day)</label>
+                    <input type="number" id="screen_time_hours" name="screen_time_hours" 
+                           step="0.1" min="0" max="24" required>
+                    <span class="hint">e.g., 9.0</span>
+                </div>
+
+                <!-- Meetings Count -->
+                <div class="form-group">
+                    <label for="meetings_count">Number of Meetings</label>
+                    <input type="number" id="meetings_count" name="meetings_count" 
+                           min="0" max="50" required>
+                    <span class="hint">e.g., 5</span>
+                </div>
+
+                <!-- Breaks Taken -->
+                <div class="form-group">
+                    <label for="breaks_taken">Breaks Taken</label>
+                    <input type="number" id="breaks_taken" name="breaks_taken" 
+                           min="0" max="20" required>
+                    <span class="hint">e.g., 3</span>
+                </div>
+
+                <!-- After Hours Work -->
+                <div class="form-group">
+                    <label for="after_hours_work">After-Hours Work (hours)</label>
+                    <input type="number" id="after_hours_work" name="after_hours_work" 
+                           min="0" max="10" required>
+                    <span class="hint">e.g., 2</span>
+                </div>
+
+                <!-- Sleep Hours -->
+                <div class="form-group">
+                    <label for="sleep_hours">Sleep Hours</label>
+                    <input type="number" id="sleep_hours" name="sleep_hours" 
+                           step="0.1" min="0" max="24" required>
+                    <span class="hint">e.g., 7.5</span>
+                </div>
+
+                <!-- Task Completion Rate -->
+                <div class="form-group">
+                    <label for="task_completion_rate">Task Completion Rate (%)</label>
+                    <input type="number" id="task_completion_rate" name="task_completion_rate" 
+                           step="0.01" min="0" max="100" required>
+                    <span class="hint">e.g., 85.50</span>
+                </div>
+
+                <!-- Day Type Weekend -->
+                <div class="form-group checkbox-group">
+                    <label for="day_type_Weekend">
+                        <input type="checkbox" id="day_type_Weekend" name="day_type_Weekend">
+                        Is this a Weekend?
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Predict Burnout Score</button>
+        </form>
+
+        <!-- Results Section -->
+        <div id="results" class="results hidden">
+            <h2>Prediction Results</h2>
+            <div class="result-card">
+                <div class="score-display">
+                    <span class="label">Burnout Score:</span>
+                    <span id="burnoutScore" class="score">--</span>
+                </div>
+                <div class="level-display">
+                    <span class="label">Risk Level:</span>
+                    <span id="burnoutLevel" class="level">--</span>
+                </div>
+                <p id="burnoutMessage" class="message">--</p>
+            </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error" class="error hidden"></div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Analyzing your data...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with Flask + Linear Regression | ML Model Deployment Demo</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

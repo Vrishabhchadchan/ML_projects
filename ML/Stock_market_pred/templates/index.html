@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adj Close Price Predictor</title>
+
+    <!-- ✅ CORRECT WAY -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Stock Adj Close Price Prediction</h2>
+
+    <form id="predictForm">
+        <input type="number" step="any" placeholder="Open Price" id="open" required>
+        <input type="number" step="any" placeholder="High Price" id="high" required>
+        <input type="number" step="any" placeholder="Low Price" id="low" required>
+        <input type="number" step="any" placeholder="Close Price" id="close" required>
+        <input type="number" placeholder="Volume" id="volume" required>
+
+        <input type="number" placeholder="Year" id="year" required>
+        <input type="number" placeholder="Month" id="month" required>
+        <input type="number" placeholder="Day" id="day" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<!-- ✅ CORRECT WAY -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
